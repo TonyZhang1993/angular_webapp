@@ -1,0 +1,37 @@
+<div class="register">
+  <form class="d-b ta-c" name="form">
+    <div class="form-line ta-l p-r">
+      <span class="icon account va-t d-ib"></span>
+      <input name="phone" ng-model="user.phone"  class="d-ib" type="text" placeholder="输入手机号" ng-pattern="/^1[\d]{10}$/" required="">
+      <p class="warn1" ng-if='(form.phone.$error.pattern && flag)'>
+        请输入11位的手机号码
+      </p>
+      <p class="warn1" ng-if='(form.phone.$error.required && flag)'>
+        请输入手机号码
+      </p>
+    </div>
+    <div class="form-line ta-l p-r">
+      <span class="icon lock va-t d-ib"></span>
+      <input name="password" ng-model="user.password"  class="d-ib" type="password" placeholder="设置6位以上的密码" ng-pattern="/^[\d]{6,10}$/" required="">
+      <p class="warn2" ng-if='(form.password.$error.pattern && flag)'>
+        请设置6位到10位的密码
+      </p>
+      <p class="warn2" ng-if='(form.password.$error.required && flag)'>
+        请输入密码
+      </p>
+    </div>
+    <div class="message-wrap ta-l p-r">
+      <input name="code"  ng-model="user.code" class="message-box" placeholder="短信验证码" type="text" ng-pattern="/^[\d]{5}$/" required="">
+      <span class="message f-r {{time?'disabled':''}}" ng-click="time?1==1:send();" ng-bind="time?time:'发送短信'"></span>
+      <p class="warn3" ng-if='(form.code.$error.pattern && flag)' >
+        请输入5位的短信验证码
+      </p>
+      <p class="warn3" ng-if='(form.code.$error.required && flag)' >
+        请输入短信验证码
+      </p>
+      <div class="clear"></div>
+    </div>
+    <button class="login-btn" ui-sref="login">登录</button>
+    <button class="register-btn" validation-submit="form" ng-click="submit()">注册</button>
+  </form>
+</div>
